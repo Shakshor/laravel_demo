@@ -9,7 +9,8 @@ Route::get('/', function () {
 
 Route::get("/jobs", function () {
     // eager_loading
-    $jobs = Job::with("employer")->get();
+    // for n+1 problem
+    $jobs = Job::with("employer")->cursorPaginate(2);
 
     // using_lazy_loading
     // $jobs = Job::all();
@@ -17,6 +18,10 @@ Route::get("/jobs", function () {
     return view('jobs', [
         "jobs" => $jobs,
     ]);
+});
+
+Route::get("/jobs/create", function () {
+    dd("hello from create job");
 });
 
 Route::get("/jobs/{id}", function ($id) {
@@ -30,7 +35,6 @@ Route::get("/jobs/{id}", function ($id) {
 
     return view('job', ["job" => $job]);
 });
-
 
 Route::get("/contact", function () {
     return view('contact');
