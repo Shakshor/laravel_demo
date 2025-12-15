@@ -27,5 +27,11 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading();
 
         // Paginator::useBootstrapFive();
+
+        /**
+         * Disable the fillable mass assignment (not recommended)
+         * for security
+         */
+        // Model::unguard();
     }
 }
