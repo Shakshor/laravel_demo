@@ -4,51 +4,49 @@
     </x-slot:heading>
 
     {{-- form --}}
-    <form method="POST" action="/jobs">
+    <form
+        method="POST"
+        action="/jobs"
+    >
         @csrf
 
         <div class="space-y-12">
             <div class="border-b border-white/10 pb-12">
                 <h2 class="text-base/7 font-semibold text-black">Create a new Job</h2>
-                <p class="mt-1 text-sm/6 text-gray-400">This information will be displayed publicly so be careful what you share.</p>
+                <p class="mt-1 text-sm/6 text-gray-400">This information will be displayed publicly so be careful what
+                    you share.</p>
 
-                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <div class="sm:col-span-4">
-                        <label for="title" class="block text-sm/6 font-medium text-black">Title</label>
-                        <div class="mt-2">
-                            <div class="flex items-center rounded-md bg-white/5 px-3 
-                                        border border-black 
-                                        focus-within:border-indigo-500">
-                                <input id="title" type="text" name="title" placeholder="Sales Engineer"
-                                    class="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-black 
-                                            placeholder:text-gray-500 focus:outline-none sm:text-sm/6" required/>
-                            </div>
 
-                            @error('title')
-                                <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
+                <x-form-field>
+                    <x-form-label for="title">
+                        Title
+                    </x-form-label>
 
-                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <div class="sm:col-span-4">
-                        <label for="salary" class="block text-sm/6 font-medium text-black">Salary</label>
-                        <div class="mt-2">
-                            <div class="flex items-center rounded-md bg-white/5 px-3 
-                                        border border-black 
-                                        focus-within:border-indigo-500">
-                                <input id="salary" type="text" name="salary" placeholder="$50,000 per year"
-                                    class="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-black 
-                                            placeholder:text-gray-500 focus:outline-none sm:text-sm/6" required/>
-                            </div>
+                    <x-form-input
+                        id="title"
+                        type="text"
+                        name="title"
+                        placeholder="Sales Engineer"
+                    ></x-form-input>
 
-                            @error('salary')
-                                <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
+                    <x-form-error name="title"></x-form-error>
+
+                </x-form-field>
+
+                <x-form-field>
+                    <x-form-label for="salary">
+                        Salary
+                    </x-form-label>
+
+                    <x-form-input
+                        id="salary"
+                        name="salary"
+                        placeholder="$50,000 USD"
+                    ></x-form-input>
+
+                    <x-form-error name="salary"></x-form-error>
+
+                </x-form-field>
             </div>
 
             {{-- <div class="mt-10">
@@ -63,15 +61,14 @@
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" class="text-sm/6 font-semibold text-black border border-black px-4 py-1 rounded-md">
+            <button
+                type="button"
+                class="rounded-md border border-black px-4 py-1 text-sm/6 font-semibold text-black"
+            >
                 Cancel
             </button>
 
-            <button type="submit"
-                    class="rounded-md bg-indigo-500 px-6 py-2 text-sm font-semibold text-white 
-                        focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                Save
-            </button>
+            <x-form-button>Save</x-form-button>
         </div>
     </form>
 </x-layout>
