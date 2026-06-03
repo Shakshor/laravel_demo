@@ -79,7 +79,6 @@
                                 >Log In</x-nav-link>
                             @endguest
                             @auth
-                                {{-- <x-nav-link href="/logout">Log Out</x-nav-link> --}}
                                 <form
                                     method="POST"
                                     action="/logout"
