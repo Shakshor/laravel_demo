@@ -3,31 +3,17 @@
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
+use App\Mail\JobPosted;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+
+Route::get('/test', function () {
+    return new JobPosted();
+});
+
 // short
 Route::view('/', 'home');
-
-
-
-// Route::controller(JobController::class)->group(function () {
-//     // index
-//     Route::get('/jobs',  'index');
-//     // create
-//     Route::get("/jobs/create",  'create');
-//     // show
-//     // Route::get("/jobs/{job:slug}", function (Job $job) {  [if  the identifier parameter isn't default id, then pass the identifier this way]
-//     Route::get("/jobs/{job}",  'show');
-//     // store
-//     Route::post("/jobs",  'store');
-//     // edit
-//     Route::get("/jobs/{job}/edit",  'edit');
-//     // update
-//     Route::patch("/jobs/{job}",  'update');
-//     // delete
-//     Route::delete("/jobs/{job}",  'destroy');
-// });
 
 Route::get('/jobs', [JobController::class, 'index']);
 Route::get('/jobs/create', [JobController::class, 'create']);
