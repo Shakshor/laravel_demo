@@ -10,4 +10,8 @@ Button Text
 Thanks,<br>
 {{ config('app.name') }}
 </x-mail::message> --}}
-Congrats!Your job is now live.
+<h2>{{ $job->title }}</h2>
+<p>Congrats!Your job is now live.</p>
+<p>
+    <a href="{{ url('/jobs/' . $job->id) }}">View Job Listing</a>
+</p>
